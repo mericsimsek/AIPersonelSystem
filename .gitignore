@@ -1,0 +1,76 @@
+# ==========================
+# 🔐 GÜVENLİK (KESİNLİKLE ATILMAMALI)
+# ==========================
+serviceAccountKey.json
+*.pem
+.env
+.env.local
+firebase_options.dart
+
+# ==========================
+# 🐍 PYTHON / BACKEND
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sanal Ortamlar (Virtual Environments)
+venv/
+env/
+.venv/
+.env/
+
+# Dağıtım ve Build dosyaları
+build/
+dist/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# Veritabanı (Eğer yerel SQLite kullanırsan)
+*.sqlite3
+*.db
+
+# Data Generator Logları (Eğer oluşuyorsa)
+*.log
+
+# ==========================
+# 📱 FLUTTER / DART
+# ==========================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Flutter Build Çıktıları (Çok yer kaplar, atılmaz)
+/build/
+
+# Android
+android/gradle/
+android/app/build/
+android/.gradle/
+android/local.properties
+android/key.properties
+android/*.keystore
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# iOS
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/.generated/
+
+# ==========================
+# 💻 IDE & OS DOSYALARI
+# ==========================
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
