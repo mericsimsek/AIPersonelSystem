@@ -15,15 +15,25 @@ class GunAnalizi:
     def _veri_hazirla(self):
         # Logları Çek
         try:
+            # Veriyi bul: Kullanıcının attendance klasörüne gir, 'bugünün tarihini' bul.
             attendance_root = self.user_data.get('attendance', {})
             gunluk_veri = attendance_root.get(self.tarih, {})
+
             records = gunluk_veri.get('records', {})
+            # Listeye çevir ve Pandas Tablosu (Excel gibi düşün) yap
             logs_list = list(records.values())
             
             if logs_list:
                 self.logs = pd.DataFrame(logs_list)
+                # --- KRİTİK KISIM (Hata Önleyici) ---
+                # Sorun: Veritabanında tarihler bazen SAYI (172567...), bazen YAZI ("2025-05...") olarak karışık duruyor.
+                # Çözüm: Kod diyor ki;
+                # 1. Önce hepsini SAYI (ms) sanıp çevirmeyi dene.
+                
                 self.logs['temp_ts'] = pd.to_datetime(self.logs['timestamp'], unit='ms', errors='coerce')
+
                 mask = self.logs['temp_ts'].isna()
+
                 if mask.any():
                     self.logs.loc[mask, 'temp_ts'] = pd.to_datetime(self.logs.loc[mask, 'timestamp'], errors='coerce')
                 self.logs['timestamp'] = self.logs['temp_ts']

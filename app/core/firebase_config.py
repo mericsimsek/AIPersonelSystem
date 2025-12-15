@@ -3,8 +3,8 @@ from firebase_admin import credentials, db
 import os
 
 def init_firebase():
-    base_path = os.getcwd()
-    key_path = os.path.join(base_path, "serviceAccountKey.json")
+    base_path = os.getcwd() #buranın yolunu alır
+    key_path = os.path.join(base_path, "serviceAccountKey.json") ##buranın yolu/ json
 
     if not firebase_admin._apps:
         try:

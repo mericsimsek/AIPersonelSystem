@@ -46,16 +46,19 @@ class SureTahminModeli:
         if any(x in text for x in ['test', 'bug', 'fix']): return 'Testing & QA'
         return 'General Development'
 
+
     def _metin_zorluk_carpani(self, text):
         """
         Metnin içindeki kelimelere bakarak bir 'Karmaşıklık Çarpanı' hesaplar.
         """
+
         text = str(text).lower()
         total_multiplier = 1.0
 
         for word, weight in self.keyword_weights.items():
             if word in text:
                 # Çarpanları kümülatif ekle
+                
                 if weight > 1.0:
                     total_multiplier += (weight - 1.0)
                 else:
@@ -89,9 +92,11 @@ class SureTahminModeli:
                     })
 
                     # Kullanıcı performans hesabı
+
                     expected = base_minutes.get(diff, 180)
                     u_tasks_durations.append(duration / expected)
             
+
             # Kullanıcının ortalama hız katsayısı
             if u_tasks_durations:
                 avg_speed = sum(u_tasks_durations) / len(u_tasks_durations)
